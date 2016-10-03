@@ -1,0 +1,171 @@
+﻿@model MvcApplicationCVManagment.Models.ApplicantAdminModel
+@{
+    ViewBag.Title = "CVBank";
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#sidebar-collapse").css("display", "block");
+        });
+    </script>
+}
+@using (Html.BeginForm("CVBank", "Admin", FormMethod.Get))
+{
+    @*@Html.AntiForgeryToken()*@
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">CV Bank</h3>
+            </div>
+            <div class="panel-body">
+                <div>
+                    <table>
+                        <tr>
+                            <td>Talents Or Interest:</td>
+                            <td>@Html.DropDownListFor(model => model.TalentOrInterest, Model.TalentsList)</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>@Html.TextBoxFor(m => m.SearchEmail, new {@class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td>@Html.TextBoxFor(m => m.SearchName, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td>Phone:</td>
+                            <td>@Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Search" style="width:35%;">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Interest</th>
+                                <th>Detials</th>
+                                <th>Delete</th>
+                                <th>Doenload Cv</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Applicants)
+                            {
+                                <tr>
+                                    <td>@item.FirstName @item.LastName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Address</td>
+                                    <td>
+                                        @if (item.InterestAnimalProduction) {
+                                            @:AnimalProduction,
+                                          }
+                                        @if (item.InterestBusiness)
+                                        {
+                                            @:Business,
+                                          }
+                                        @if (item.InterestHr)
+                                        {
+                                            @:HR,
+                                          }
+                                        @if (item.InterestIt)
+                                        {
+                                            @:IT,
+                                          }
+                                        @if (item.InterestJura)
+                                        {
+                                            @:Jura,
+                                          }
+                                        @if (item.InterestEconomy)
+                                        {
+                                            @:Economy,
+                                          }
+                                        @if (item.InterestPlanets)
+                                        {
+                                            @:Planets,
+                                          }
+                                        @if (item.InterestOthers)
+                                        {
+                                            @:Others
+                                          }
+                                    </td>
+                                    <td style="width:10%"><a href="~/Admin/Detail/@item.Id" class="btn btn-primary">Detail</a></td>
+                                    <td style="width:10%">
+                                        <a href="~/Admin/Delete/@item.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                    <td style="width:10%">
+                                        <a href="~/Admin/DownloadCV/@item.Id" class="btn btn-info">Download</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8">
+                                    @if (Model.Pager.EndPage > 1)
+                                    {
+                                        <ul class="pagination">
+                                            @if (Model.Pager.CurrentPage > 1)
+                                            {
+                                                <li>
+                                                    <a href="~/Admin/CVBank?page=1&TalentOrInterest=@Model.TalentOrInterest&SearchEmail=@Model.SearchEmail">First</a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/Admin/CVBank?page=@(Model.Pager.CurrentPage - 1)&TalentOrInterest=@Model.TalentOrInterest&SearchEmail=@Model.SearchEmail">Previous</a>
+                                                </li>
+                                            }
+
+                                            @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+                                            {
+                                                <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                                                    <a href="~/Admin/CVBank?page=@page&TalentOrInterest=@Model.TalentOrInterest&SearchEmail=@Model.SearchEmail">@page</a>
+                                                </li>
+                                            }
+
+                                            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                                            {
+                                                <li>
+                                                    <a href="~/Admin/CVBank?page=@(Model.Pager.CurrentPage + 1)&TalentOrInterest=@Model.TalentOrInterest&SearchEmail=@Model.SearchEmail">Next</a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/Admin/CVBank?page=@(Model.Pager.TotalPages)&TalentOrInterest=@Model.TalentOrInterest&SearchEmail=@Model.SearchEmail">Last</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                @*<form accept-charset="UTF-8" role="form">
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="User Name" name="UserName" type="text" value="">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            </div>
+                            <div>
+                                <label>
+                                    <a href="#/registration">Registration</a>
+                                </label>
+                            </div>
+                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                        </fieldset>
+                    </form>*@
+            </div>
+        </div>
+    </div>
+}

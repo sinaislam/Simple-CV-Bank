@@ -1,0 +1,189 @@
+﻿@model MvcApplicationCVManagment.Models.ApplicantModel
+@{
+    ViewBag.Title = "Title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts
+{
+    <script src="~/Scripts/ApplicantSimpleValidationScript.js"></script>
+}
+<div class="col-md-9">
+    <h1><font><font class="">Become a part of our </font><span style="color:#009fe3;"><font class="">Talent Database</font></span></font><br><span style="color:#009fe3;"><font></font></span></h1>
+    <p></p><p><font><font>As part of our talent database, you get particular </font><font>relevant vacancies direct to your inbox, and your CV is only when we are looking for new talent.</font></font></p>
+    <p><font><font>You can become a part of our talent database in two ways:&nbsp;</font></font></p>
+    <p><font><font>- By signing up for the newsletter&nbsp;</font></font></p>
+    <p><font><font>- By uploading your CV in our CV bank.&nbsp;</font></font></p>
+    @*<p><font><font>We recommend you to do both.</font></font></p>
+    <p>
+        <br>
+    </p>
+    <p><font><font>When you join our newsletter you will regularly receive job opportunities within your field and be updated when we have relevant news and events for you.</font></font></p>
+    <p><a href="http://eepurl.com/bN1Wo1" target="_blank"><img height="35" alt="Subscribe to the newsletter here" width="228" src="/~/media/WeGrowBusiness/Nyhedsbrev/228x35_TilmeldNyhedsbrev.ashx?la=en&amp;hash=337D1831772EFF488B5780E3E40D16288BAAB6A5"></a></p>
+    <p>
+        <br>
+    </p>
+    <p><font><font>The moment you've uploaded your CV to the database, you are already one step ahead when the consulting firms behind We Grow Business searching for new skilled graduates.&nbsp;</font></font></p>
+    <p style="margin-bottom: 0px;"><font><font>Enter your information below and upload your CV.</font></font></p>*@
+    <div>
+        <br>
+    </div><p></p>
+</div>
+@using (Html.BeginForm("Index", "Applicant", FormMethod.Post, new { enctype = "multipart/form-data", id = "cvForm"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+<div id="talent-signup-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="validation-summary-errors">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2><font><font>Contact Information</font></font></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "FirstName" })
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "LastName" })
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @*<input class="form-control" id="Email" name="Email" placeholder="Mail" type="email">*@
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email", type = "email" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @*<input class="form-control" id="Phone" name="Phone" placeholder="Telefon" type="tel">*@
+                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Phone", type = "tel" })
+                        @Html.ValidationMessageFor(model => model.Phone)
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @*<input class="form-control" id="Address" name="Address" placeholder="Adresse" type="text">*@
+                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Adresse" })
+                        @Html.ValidationMessageFor(model => model.Address)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @*<input class="form-control" id="PostalCode" name="PostalCode" placeholder="Postnummer" type="text">*@
+                        @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control", placeholder = "PostalCode" })
+                        @Html.ValidationMessageFor(model => model.PostalCode)
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @*<input class="form-control" id="City" name="City" placeholder="By" type="text">*@
+                        @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "City" })
+                        @Html.ValidationMessageFor(model => model.City)
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2><font><font>What positions have interest?</font></font></h2>
+            <div class="interest-buttoncheckbox">
+                @Html.CheckBoxFor(model => model.InterestAnimalProduction)<font><font>animal production</font></font><br />
+                @Html.CheckBoxFor(model => model.InterestBusiness)<font><font>Business</font></font><br />
+                @Html.CheckBoxFor(model => model.InterestHr)<font><font>HR and Communications</font></font><br />
+                @Html.CheckBoxFor(model => model.InterestIt)<font><font>IT</font></font><br />
+                @Html.CheckBoxFor(model => model.InterestJura)<font><font>Jura</font></font><br />
+                @Html.CheckBoxFor(model => model.InterestEconomy)<font><font>Economy</font></font><br />
+                @Html.CheckBoxFor(model => model.InterestEconomy)<font><font>Plants and Environment</font></font><br />
+                @Html.CheckBoxFor(model => model.InterestOthers)<font><font>Others</font></font>
+
+            </div>
+            </div>
+        <div class="clearfix visible-xs visible-sm"></div>
+        <div class="col-md-6">
+            <h2><font><font>Current status</font></font></h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="clearfix"></div>
+                        <div class="status-button">@Html.RadioButton("Status", "In work")In work @Html.RadioButton("Status", "Available")Available @Html.RadioButton("Status", "During Education")During Education</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @*<input class="form-control" id="LinkedInUrl" name="LinkedInUrl" placeholder="LinkedIn-profil (webadresse)" type="url" value="">*@
+                        @Html.TextBoxFor(model => model.LinkedInUrl, new { @class = "form-control", placeholder = "LinkedIn-profil (webadresse)", type = "url" })
+                        @Html.ValidationMessageFor(model => model.LinkedInUrl)
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="cv-upload-input" id="cv-upload-label"><font><font>Upload CV</font></font></label>
+                        <input id="cv-upload-input" name="pdfFile" type="file" accept="application/pdf">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="checkbox">
+                        <label class="terms">
+                            @*<input id="AcceptTerms" name="AcceptTerms" type="checkbox">*@
+                            @Html.CheckBoxFor(model => model.AcceptTerms)
+                            @Html.ValidationMessageFor(model => model.AcceptTerms)
+                            <input name="AcceptTerms" type="hidden" value="false">
+                            <font><font>I agree to </font></font><a href="/Vilkaar og betingelser"><font><font>conditions</font></font></a><br>
+                            <br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button id="talent-button-submit" onClick='submitRegistrationForm()'><font><font>Register</font></font></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

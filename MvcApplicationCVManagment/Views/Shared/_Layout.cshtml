@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="studentmanageApp">
+<head>
+    <title>Demo Film Manage</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    @*<link href="~/Content/half-slider.css" rel="stylesheet" />*@
+    <link href="~/Content/app.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/angular-ui-tree.css">
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <header class="container">
+        <div id="globalLinks" class="row">
+            <a href="/account/login"><font><font>Sign In</font></font></a><font>
+                <font>
+                    |
+                </font>
+            </font><a href="/Kontakt"><font><font>Contact</font></font></a>
+        </div>
+        <div class="row">
+            <div id="navigation-desktop" class="visible-md visible-lg">
+                <div id="menuTriangle">
+                    <div id="triangle"></div>
+                    <div id="square"></div>
+                </div>
+
+                <div id="logo">
+                    <a href="/">
+                        <img src="~/Images/Logo.jpg" />
+                    </a>
+                </div>
+
+                <ul>
+                    <li><a href="/om-we-grow-business"><p style=""><font><font>About We Grow Business</font></font></p></a></li>
+                    <li><a href="/Jobportal"><p style=""><font><font>Job portal</font></font></p></a></li>
+                    <li><a href="/Talentdatabase"><p style="color: #009FE3;"><font><font>talent Database</font></font></p></a></li>
+                    <li><a href="/moed-medarbejderne"><p style=""><font><font>Meet the staff</font></font></p></a></li>
+                </ul>
+
+            </div>
+            <div id="navigation-mobile" class="visible-xs visible-sm">
+                <div id="menuTriangle" class="hidden-xs">
+                    <div id="triangle"></div>
+                    <div id="square"></div>
+                </div>
+
+                <div id="logo">
+                    <a href="/">
+                        <img src="~/Images/Logo.jpg" />
+
+                    </a>
+                </div>
+
+                <div id="nav-button">
+                    <div id="nav-button-content">
+                        <div id="burger-menu">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </div>
+                        <span class="hidden-xs"><font><font>MENU</font></font></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div id="search-dropdown">
+                <div>
+                    <input type="text" id="search-input" placeholder="Hvad søger du efter?">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="navigation-mobile-dropdown" class="collapse" aria-expanded="false">
+                <ul>
+                    <li><a href="/om-we-grow-business" style=""><font><font>About We Grow Business</font></font></a></li>
+                    <li><a href="/Jobportal" style=""><font><font>Job portal</font></font></a></li>
+                    <li><a href="/Talentdatabase" style="color: #009FE3;"><font><font>talent Database</font></font></a></li>
+                    <li><a href="/moed-medarbejderne" style=""><font><font>Meet the staff</font></font></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Page Content -->
+    <section id="talent-signup-section" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @RenderBody()
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @*<p>Copyright &copy; Your Website 2014</p>*@
+                </div>
+            </div>
+            </div>
+            <!-- /.row -->
+</footer>
+    <!-- /.container -->
+    <!-- Script to Activate the Carousel -->
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

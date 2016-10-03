@@ -1,0 +1,56 @@
+﻿@model MvcApplicationCVManagment.Models.ApplicantDetailModel
+@{
+    ViewBag.Title = "Applicant Details";
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#sidebar-collapse").css("display", "block");
+        });
+    </script>
+}
+
+    @*@Html.AntiForgeryToken()*@
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Applicant Details</h3>
+            </div>
+            <div class="panel-body">
+                <div>
+                    <table>
+                        <tr>
+                            <td><b>Name:</b></td>
+                            <td>@Model.Name</td>
+                        </tr>
+                        <tr>
+                            <td><b>Address:</b></td>
+                            <td>@Model.Address</td>
+                        </tr>
+                        <tr>
+                            <td><b>Phone:</b></td>
+                            <td>@Model.Phone</td>
+                        </tr>
+                        <tr>
+                            <td><b>Address:</b></td>
+                            <td>@Model.Address</td>
+                        </tr>
+                        <tr>
+                            <td><b>Talents Or Interest:</b></td>
+                            <td>@Model.Interest</td>
+                        </tr>
+                        <tr>
+                            <td><b>Email:</b></td>
+                            <td>@Model.Email</td>
+                        </tr>
+                        <tr>
+                            <td><a href="~/Admin/DownloadCVIndividual/@Model.Id" class="btn btn-primary">Download Cv</a></td>
+                            <td><a href="~/Admin/CVBank" class="btn btn-default">Back To List</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
