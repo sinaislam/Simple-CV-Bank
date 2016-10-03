@@ -5,4 +5,5 @@
 5. Autofac for MVC and WebApi.
 6. Repository pattern follow.
 7. Very initial stage.
+8. To run the application need to create CVManagSystem database first.(Or you can create database).
 8. To run the application need to execute the .sql file at database first. 
